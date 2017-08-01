@@ -1,0 +1,47 @@
+<div *ngIf="item">
+    <ba-card cardTitle="{{item.itemName}}" baCardClass="with-scroll button-panel">
+        <form>
+
+            <div *ngFor="let question of item.questions ; let i = index" [attr.data-index]="i">
+                <div class="col-md-12">
+                    <div class="light-text">
+
+                        <label>{{(i + 1)}}.&nbsp;&nbsp;  </label>{{question.value}}
+
+                    </div>
+                </div>
+
+                <!-- <div class="btn-group">
+                    <div *ngFor="let value of questionaireOptions">
+                        <button class="btns btn-success btn-sm" onclick="getButtonValue()">
+                  {{value.optionValue}}
+                  </button>
+                    </div>
+                </div> -->
+                <div class="section-block light-text col-md-6 offset-md-6">
+                    <div class="btn-group">
+                        <div *ngFor="let value of questionaireOptions">
+                            <div ngbRadioGroup name="radioTest">
+                                <button class="btns btn-success">
+                  <input ngbButton type="radio" [value]="value.optionId" name={{question.questionId}} (click)="onClickValue(question,value,item)" ngModel/>  {{value.optionValue}}
+                  </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value={{question.id}}> 
+               <span>{{question.value}}</span> -->
+            </div>
+            <hr>
+            <pre>{{value}}</pre>
+            <div class="offset-md-5">
+                <button type="submit" class="btns btn-success btn-sm" (click)="saveValues(question,value,item)">
+                 SAVE
+            </button>
+                <button type="cancel" class="btns btn-danger btn-sm" (click)="resetChanges(question,value,item)">
+                RESET
+            </button>
+            </div>
+        </form>
+    </ba-card>
+</div>

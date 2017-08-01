@@ -1,0 +1,45 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <ba-card cardTitle="Components List" baCardClass="with-scroll button-panel">
+                    <form>
+                        <!--<div *ngIf="isEmptyObject(items)"> -->
+                        <div *ngFor="let item of items" [class.selected]="item === selectedItem" (click)="onSelect(item)">
+                            <div *ngIf="!item.saveFlag; else itemSavedBlock">
+                                <div class="button-wrapper">
+                                    <button type="button" class="btn btn-primary btn-raised">{{item.itemName}}</button>
+                                </div>
+                            </div>
+
+                            <ng-template #itemSavedBlock>
+                                <div class="button-wrapper">
+                                    <button type="button" class="btn btn-success btn-raised">{{item.itemName}}</button>
+                                </div>
+                            </ng-template>
+                        </div>
+                        <!--</div> -->
+                    </form>
+                </ba-card>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <nga-estimator-item-details [item]="selectedItem"></nga-estimator-item-details>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <nga-estimator-item-analysis></nga-estimator-item-analysis>
+        </div>
+    </div>
+
+
+    <ba-card cardTitle="Effort Visualisation">
+        <nga-item-visualization></nga-item-visualization>
+    </ba-card>
+    <div class="offset-md-4">
+        <button type="button" class="btn btn-danger btn-raised">Generate Excel</button>
+        <button type="button" class="btn btn-danger btn-raised">Generate PDF</button>
+    </div>
+</div>

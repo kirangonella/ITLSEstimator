@@ -1,0 +1,30 @@
+$hover: 24;
+.item:focus, .item:active:focus, .item.active:focus,
+.item.focus, .item:active.focus, .item.active.focus {
+  outline: none;
+}
+
+@mixin styleItem($color, $borderColor) {
+  background: $color;
+  border-color: $borderColor;
+}
+
+@mixin itemColor($color, $borderColor) {
+  @include styleItem($color, $borderColor);
+
+  &.disabled, &[disabled], fieldset[disabled] &, &.disabled:hover, &[disabled]:hover,
+  fieldset[disabled] &:hover, &.disabled:focus, &[disabled]:focus, fieldset[disabled] &:focus,
+  &.disabled.focus, &[disabled].focus, fieldset[disabled] &.focus, &.disabled:active,
+  &[disabled]:active, fieldset[disabled] &:active, &.disabled.active, &[disabled].active,
+  fieldset[disabled] &.active {
+    @include styleItem($color, $borderColor + $hover/2);
+    &:hover {
+      transform: none;
+    }
+  }
+
+  &:hover, &:focus, &.focus, &:active, &.active {
+    @include styleItem($color, $borderColor - $hover);
+  }
+}
+

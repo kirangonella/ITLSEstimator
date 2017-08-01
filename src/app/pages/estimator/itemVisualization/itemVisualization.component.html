@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-7">
+        <ba-card cardTitle="EFFORT ESTIMATE PHASEWISE" baCardClass="traffic-panel">
+
+            <div class="channels-block">
+
+
+                <div class="traffic-chart" id="trafficChart">
+                    <div class="canvas-holder" id="canvas-holder">
+                        <canvas class="chart-area" labels="label"></canvas>
+                        <div class="traffic-text">
+
+                            <span translate>Total Effort </span>
+                            <span translate> {{this.itemDetailsService.totalEffortDaysCalc}} Days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layout">
+                    <div class="traffic-legend" *ngFor="let item of doughnutData">
+                        <div class="legend-color" [ngStyle]="{'background-color': item.color }"> </div>
+                        {{ item.label }}
+                    </div>
+                </div>
+
+                <!--    <div class="traffic-legend">
+                    <div class="channels-info-item" *ngFor="let item of doughnutData">
+                        <div class="legend-color" [ngStyle]="{'background-color': item.color }"> </div>
+                        <p>{{ item.label }}</p>
+
+                    </div>
+                </div> -->
+
+            </div>
+
+        </ba-card>
+
+    </div>
+    <div class="col-md-5">
+        <ba-card cardTitle="Component Effort Estimation Table" baCardClass="with-scroll" class="smart-table-container">
+            <ng2-smart-table [settings]="settingsPhases" [source]="sourcePhases" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>
+        </ba-card>
+
+    </div>
+</div>

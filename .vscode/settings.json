@@ -1,0 +1,49 @@
+{
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "tslint.enable": false,
+    "deploy": {
+        "button": {
+            "text": "Deploy to Ramanujam",
+            "tooltip": "Click here to deploy to the target...",
+            "enabled": false,
+            "targets": [
+                "Ramanujam"
+            ]
+        },
+        "packages": [
+            {
+                "name": "Version 2.3.4",
+                "description": "Package version 2.3.4",
+                "files": [
+                    "**/*.*",
+                    "/*.json"
+                ],
+                "exclude": [
+                    "node_modules/**"
+                ],
+                "deployOnSave": false
+            },
+            {
+                "name": "Version 2.3.5 (anything)",
+                "description": "Package version 2.3.5"
+            }
+        ],
+        "targets": [
+            {
+                "type": "sftp",
+                "name": "Ramanujam",
+                "description": "Remote SFTP folder",
+                "dir": "/opt/ng2-admin-master",
+                "host": "dockerbox",
+                "port": 22,
+                "user": "kiran",
+                "password": "oxygen"
+            }
+        ],
+        "host": [
+            {
+                "dir": "C:\\Users\\kiran.g\\Documents\\Ramanujam\\angular-new-app\\ng2-admin-master"
+            }
+        ]
+    }
+}
